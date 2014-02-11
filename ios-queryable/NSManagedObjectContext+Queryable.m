@@ -17,6 +17,14 @@
 
 @end
 
+@implementation NSManagedObject(Queryable)
+
++(IQueryable*) queryWithContext: (NSManagedObjectContext*) context {
+    return [[IQueryable alloc] initWithType: NSStringFromClass(self.class) context: context];
+}
+
+@end
+
 
 @interface IQueryable()
 

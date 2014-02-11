@@ -69,3 +69,8 @@
 
 @end
 
+@interface NSManagedObject(Queryable)
+
++(IQueryable*)queryWithContext: (NSManagedObjectContext*) context;
+
+@end
