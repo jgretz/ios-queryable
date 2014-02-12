@@ -42,9 +42,9 @@
 
 -(IQueryable*) where:(NSString*)condition, ...;
 
--(int) count;
+-(NSInteger) count;
 
--(int) count:(NSString*)condition, ...;
+-(NSInteger) count:(NSString*)condition, ...;
 
 -(bool) any;
 
@@ -59,6 +59,8 @@
 -(double) min:(NSString*)propertyName;
 
 -(double) max:(NSString*)propertyName;
+
+-(NSFetchRequest*) getFetchRequest;
 
 @end
 

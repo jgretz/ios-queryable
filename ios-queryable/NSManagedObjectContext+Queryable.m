@@ -151,26 +151,26 @@
     return q;
 }
 
--(int) count
+-(NSInteger) count
 {
     NSFetchRequest* fetchRequest = [self getFetchRequest];
-    int theCount = [self.context countForFetchRequest:fetchRequest error:nil];
+    NSInteger theCount = [self.context countForFetchRequest:fetchRequest error:nil];
     return theCount;
 }
 
--(int) count:(NSString*)condition withArgs:(va_list)args
+-(NSInteger) count:(NSString*)condition withArgs:(va_list)args
 {
     IQueryable* q = [self where:condition withArgs:args];
-    int theCount = [q count];
+    NSInteger theCount = [q count];
     return theCount;
 }
 
--(int) count:(NSString*)condition, ...
+-(NSInteger) count:(NSString*)condition, ...
 {
     va_list args;
     va_start(args, condition);
 
-    int theCount = [self count:condition withArgs:args];
+    NSInteger theCount = [self count:condition withArgs:args];
 
     va_end(args);
     return theCount;
@@ -178,7 +178,7 @@
 
 -(bool)any
 {
-    int count = [self count];
+    NSInteger count = [self count];
     bool hasAny = count > 0;
     return hasAny;
 }
@@ -188,7 +188,7 @@
     va_list args;
     va_start(args, condition);
 
-    int count = [self count:condition withArgs:args];
+    NSInteger count = [self count:condition withArgs:args];
     bool hasAny = count > 0;
 
     va_end(args);
@@ -200,8 +200,8 @@
     va_list args;
     va_start(args, condition);
 
-    int conditionCount = [self count:condition withArgs:args];
-    int totalCount = [self count];
+    NSInteger conditionCount = [self count:condition withArgs:args];
+    NSInteger totalCount = [self count];
     bool doAllMatch = conditionCount == totalCount;
 
     va_end(args);
@@ -348,7 +348,7 @@
 - (NSUInteger)countByEnumeratingWithState:(NSFastEnumerationState *)state objects:(id __unsafe_unretained []) stackbuf count:(NSUInteger)len
 {
     NSArray* items = [self toArray];
-    uint count = [items countByEnumeratingWithState:state objects:stackbuf count:len];
+    NSUInteger count = [items countByEnumeratingWithState:state objects:stackbuf count:len];
     return count;
 }
 
